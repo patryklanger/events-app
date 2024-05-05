@@ -1,0 +1,30 @@
+@use "@app/mixins";
+
+.app-events-form {
+  @include mixins.page-container;
+  width: 100%;
+
+  &__form {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    gap: 20px;
+  }
+
+  &__form-field {
+    width: calc(50% - 10px);
+
+    &--full-width {
+      width: 100%;
+    }
+
+    @media (max-width: 795px) {
+      width: 100%;
+    }
+  }
+
+  &__action-buttons {
+    display: flex;
+    gap: 30px;
+  }
+}

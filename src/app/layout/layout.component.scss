@@ -1,0 +1,10 @@
+.app-layout {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+
+	&__drawer {
+		height: 100%;
+		flex-grow: 1;
+	}
+}

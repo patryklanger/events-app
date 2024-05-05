@@ -1,0 +1,16 @@
+@use "@app/mixins";
+
+.app-event-details {
+	@include mixins.page-container;
+	display: flex;
+	justify-content: center;
+
+	&__info-title {
+		font-weight: 700;
+		margin-bottom: 10px;
+	}
+
+	&__card {
+		max-width: 600px;
+	}
+}

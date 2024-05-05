@@ -1,0 +1,319 @@
+{
+  "version": "6.0",
+  "nxVersion": "18.3.4",
+  "deps": {
+    "@angular/animations": "^17.2.0",
+    "@angular/cdk": "^17.3.6",
+    "@angular/common": "^17.2.0",
+    "@angular/compiler": "^17.2.0",
+    "@angular/core": "^17.2.0",
+    "@angular/forms": "^17.2.0",
+    "@angular/material": "^17.3.6",
+    "@angular/platform-browser": "^17.2.0",
+    "@angular/platform-browser-dynamic": "^17.2.0",
+    "@angular/router": "^17.2.0",
+    "lodash": "^4.17.21",
+    "ngx-mat-timepicker": "^17.1.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.3",
+    "@angular-devkit/build-angular": "^17.2.3",
+    "@angular-eslint/builder": "17.3.0",
+    "@angular-eslint/eslint-plugin": "17.3.0",
+    "@angular-eslint/eslint-plugin-template": "17.3.0",
+    "@angular-eslint/schematics": "17.3.0",
+    "@angular-eslint/template-parser": "17.3.0",
+    "@angular/cli": "^17.2.3",
+    "@angular/compiler-cli": "^17.2.0",
+    "@types/jasmine": "~5.1.0",
+    "@types/lodash": "^4.17.0",
+    "@typescript-eslint/eslint-plugin": "7.2.0",
+    "@typescript-eslint/parser": "7.2.0",
+    "eslint": "^8.57.0",
+    "jasmine-core": "~5.1.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "typescript": "~5.3.2"
+  },
+  "pathMappings": {
+    "@app/core": [
+      "./src/app/core"
+    ],
+    "@app/shared": [
+      "./src/app/shared"
+    ]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": "src/favicon.ico",
+        "hash": "3988961587069885523"
+      },
+      {
+        "file": "src/app/core/models/index.ts",
+        "hash": "8687335680469485111"
+      },
+      {
+        "file": "src/styles.scss",
+        "hash": "9525514396149276363"
+      },
+      {
+        "file": "src/app/app.component.html",
+        "hash": "2260443417687817315"
+      },
+      {
+        "file": "src/app/shared/index.ts",
+        "hash": "8803007674374100602"
+      },
+      {
+        "file": "src/app/events/card/event-card.component.scss",
+        "hash": "2668435647987504641"
+      },
+      {
+        "file": ".editorconfig",
+        "hash": "6686520031028425313"
+      },
+      {
+        "file": "src/app/layout/menu/menu.component.scss",
+        "hash": "12523306121204483286"
+      },
+      {
+        "file": "tsconfig.app.json",
+        "hash": "17337579397915052279"
+      },
+      {
+        "file": "src/app/layout/menu/menu.component.ts",
+        "hash": "10841217666153815100"
+      },
+      {
+        "file": "src/app/layout/header/header.component.ts",
+        "hash": "4375039126895494231"
+      },
+      {
+        "file": "tsconfig.spec.json",
+        "hash": "15575553540147145788"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "5331566439708925252"
+      },
+      {
+        "file": "src/app/shared/patterns.const.ts",
+        "hash": "4789599022857016742"
+      },
+      {
+        "file": ".vscode/launch.json",
+        "hash": "17038929134016848735"
+      },
+      {
+        "file": "src/app/events/form/events-form.component.html",
+        "hash": "3098756418675236414"
+      },
+      {
+        "file": "src/app/events/events-routing.module.ts",
+        "hash": "2232790756211241693"
+      },
+      {
+        "file": "src/app/core/gateways/events.const.ts",
+        "hash": "8340699686715123984"
+      },
+      {
+        "file": "src/app/shared/shared.module.ts",
+        "hash": "11111603993735925799"
+      },
+      {
+        "file": "src/app/shared/directives/index.ts",
+        "hash": "4724440477923845182"
+      },
+      {
+        "file": "src/app/events/card/event-card.component.ts",
+        "hash": "1572139077485725980"
+      },
+      {
+        "file": "src/app/events/form/events-form.model.ts",
+        "hash": "10239180759879339946"
+      },
+      {
+        "file": "package.json",
+        "hash": "6017109301514905277"
+      },
+      {
+        "file": "src/app/app.component.spec.ts",
+        "hash": "6806372035489915403"
+      },
+      {
+        "file": "src/app/layout/layout.module.ts",
+        "hash": "4066346818179678845"
+      },
+      {
+        "file": "src/app/app.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/layout/layout.component.scss",
+        "hash": "4157792359315467255"
+      },
+      {
+        "file": "src/app/events/events.component.html",
+        "hash": "14335823824758037355"
+      },
+      {
+        "file": "src/assets/football-match.jpeg",
+        "hash": "4032891926775799116"
+      },
+      {
+        "file": "src/app/events/list/events-list.component.html",
+        "hash": "13631132835329643602"
+      },
+      {
+        "file": "src/app/core/models/event.model.ts",
+        "hash": "11551383622572802377"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "16655068209193429668"
+      },
+      {
+        "file": "angular.json",
+        "hash": "6275752743249983867"
+      },
+      {
+        "file": "src/app/events/list/events-list.service.ts",
+        "hash": "8312489767405986990"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "789402343117330660"
+      },
+      {
+        "file": "src/index.html",
+        "hash": "17139471858220578711"
+      },
+      {
+        "file": "src/app/events/list/events-list.component.scss",
+        "hash": "2004882727132467431"
+      },
+      {
+        "file": "src/app/layout/menu/menu.model.ts",
+        "hash": "3645421664900273335"
+      },
+      {
+        "file": "src/app/events/card/event-card.component.html",
+        "hash": "17039727992167843659"
+      },
+      {
+        "file": "src/app/core/models/form.model.ts",
+        "hash": "1001488699047730731"
+      },
+      {
+        "file": "src/app/shared/directives/error.directive.ts",
+        "hash": "17415832331248440723"
+      },
+      {
+        "file": "src/app/app.module.ts",
+        "hash": "14058896094694729448"
+      },
+      {
+        "file": "src/app/events/events.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/events/events.module.ts",
+        "hash": "3814989687065036518"
+      },
+      {
+        "file": "README.md",
+        "hash": "4539814314357011508"
+      },
+      {
+        "file": "src/app/events/list/events-list.component.ts",
+        "hash": "9355188622438461873"
+      },
+      {
+        "file": "src/app/core/gateways/mock-event.gateway.ts",
+        "hash": "1217478091006682463"
+      },
+      {
+        "file": "src/main.ts",
+        "hash": "12246588107753938993"
+      },
+      {
+        "file": "src/app/layout/header/header.component.scss",
+        "hash": "256203613695249081"
+      },
+      {
+        "file": "src/app/events/events.component.ts",
+        "hash": "8188947735154744559"
+      },
+      {
+        "file": "src/app/app.component.ts",
+        "hash": "2086088297008093528"
+      },
+      {
+        "file": "src/assets/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/layout/menu/menu.const.ts",
+        "hash": "12189893797517435693"
+      },
+      {
+        "file": "src/app/app-routing.module.ts",
+        "hash": "5234252078701475222"
+      },
+      {
+        "file": "src/app/layout/layout.component.ts",
+        "hash": "13601557323976234780"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "8994344436398462294"
+      },
+      {
+        "file": "src/app/events/form/events-form.component.ts",
+        "hash": "14131458020398664096"
+      },
+      {
+        "file": "src/app/layout/menu/menu.component.html",
+        "hash": "6043520856416971736"
+      },
+      {
+        "file": "src/app/layout/layout.component.html",
+        "hash": "7269605341878021416"
+      },
+      {
+        "file": "src/app/core/index.ts",
+        "hash": "1018005306138010576"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "14831711255100259582"
+      },
+      {
+        "file": ".vscode/tasks.json",
+        "hash": "5336636969995539451"
+      },
+      {
+        "file": "src/app/core/gateways/index.ts",
+        "hash": "14885527727773751195"
+      },
+      {
+        "file": "src/app/layout/header/header.component.html",
+        "hash": "1292549982660865974"
+      },
+      {
+        "file": "src/app/layout/layout.service.ts",
+        "hash": "2900228562951535732"
+      },
+      {
+        "file": "src/app/events/form/events-form.component.scss",
+        "hash": "1145472643613255146"
+      }
+    ],
+    "projectFileMap": {}
+  }
+}

@@ -1,0 +1,20 @@
+@use "@app/mixins";
+
+.app-events-list {
+	@include mixins.page-container;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+
+	&__list-container {
+		display: inline-flex;
+    	flex-wrap: wrap;
+    	gap: 20px;
+	}
+
+	&__create-button-container {
+		display: flex;
+		justify-content: flex-start;
+		margin-bottom: 20px;
+	}
+}

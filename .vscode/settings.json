@@ -1,0 +1,14 @@
+{
+  "html.format.wrapAttributes": "force",
+  "html.format.wrapLineLength": 120,
+  "html.format.maxPreserveNewLines": 1,
+  "eslint.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "angular.enable-strict-mode-prompt": false,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+  },
+}

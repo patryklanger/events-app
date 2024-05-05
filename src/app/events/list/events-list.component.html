@@ -1,0 +1,8 @@
+<div class="app-events-list__create-button-container" routerLink="/events/add">
+	<button mat-raised-button>Create event</button>
+</div>
+<div class="app-events-list__list-container">
+	@for(event of events; track event) {
+	<app-event-card [event]="event"></app-event-card>
+	}
+</div>
