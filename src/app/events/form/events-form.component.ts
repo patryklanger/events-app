@@ -5,7 +5,7 @@ import { EventPayload, EventType } from "@app/core";
 import { PHONE_NUMBER_PATTERN } from "@app/shared";
 
 import { EventsListService } from "../list/events-list.service";
-import { eventTypeOptions, eventsFromModel } from "./events-form.model";
+import { eventsFromModel } from "./events-form.model";
 
 const NAME_KEBAB = "app-events-form";
 
