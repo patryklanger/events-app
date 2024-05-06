@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
+import { Observable, of } from "rxjs";
 
 import { EventInfo, EventPayload } from "../models/event.model";
 import { events } from "./events.const";
-import { Observable, of } from "rxjs";
 
 
 @Injectable({

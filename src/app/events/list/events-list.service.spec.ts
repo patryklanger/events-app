@@ -1,9 +1,9 @@
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { TestBed } from "@angular/core/testing";
+import { Subject, of, takeUntil, tap } from "rxjs";
 import { EventInfo, EventType, MockEventGateway } from "@app/core";
 
 import { EventsListService } from "./events-list.service";
-import { Subject, of, takeUntil, tap } from "rxjs";
 
 const mockEvents: EventInfo[] = [
 	{
