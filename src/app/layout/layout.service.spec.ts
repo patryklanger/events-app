@@ -1,4 +1,4 @@
-import { Observable, Subject, Subscription, finalize, takeUntil, tap } from "rxjs";
+import { Observable, Subject, takeUntil, tap } from "rxjs";
 import { NavigationEnd, Router } from "@angular/router";
 import { TestBed } from "@angular/core/testing";
 
@@ -25,7 +25,7 @@ class MockRouter {
 describe("LayoutService", () => {
 	let layoutService: LayoutService;
 	const mockSpy = new MockRouter();
-	const _destroy$ = new Subject<void>();
+	const destroy$ = new Subject<void>();
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
@@ -42,18 +42,18 @@ describe("LayoutService", () => {
 	});
 
 	afterEach(() => {
-		_destroy$.next();
+		destroy$.next();
 	});
 
 	afterAll(() => {
-		_destroy$.complete();
+		destroy$.complete();
 	});
 
 	describe("drawerOpened$", () => {
 		it("should return false after init", () => {
 			layoutService.drawerOpened$.pipe(
 				tap(drawerOpened => expect(drawerOpened).toBeFalse()),
-				takeUntil(_destroy$)
+				takeUntil(destroy$)
 			).subscribe();
 		});
 
@@ -62,7 +62,7 @@ describe("LayoutService", () => {
 
 			layoutService.drawerOpened$.pipe(
 				tap(drawerOpened => expect(drawerOpened).toBeTrue()),
-				takeUntil(_destroy$)
+				takeUntil(destroy$)
 			).subscribe();
 		});
 
@@ -72,7 +72,7 @@ describe("LayoutService", () => {
 
 			layoutService.drawerOpened$.pipe(
 				tap(drawerOpened => expect(drawerOpened).toBeFalse()),
-				takeUntil(_destroy$)
+				takeUntil(destroy$)
 			).subscribe();
 		});
 	});
