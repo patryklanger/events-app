@@ -3,15 +3,19 @@
 .app-events-list {
 	@include mixins.page-container;
 
+	&__header {
+		display: inline;
+	}
+
 	&__list-container {
 		display: inline-flex;
     	flex-wrap: wrap;
     	gap: 20px;
 	}
 
-	&__create-button-container {
+	&__action-container {
 		display: flex;
-		justify-content: flex-start;
+		justify-content: space-between;
 		margin-bottom: 20px;
 	}
 }

@@ -1,12 +1,13 @@
-<mat-card>
+<mat-card class="app-event-card__card">
 	<mat-card-header>
 		<h3>{{ event.title }}</h3>
 	</mat-card-header>
 	<img
+		class="app-event-card__image"
 		mat-card-image
 		[src]="event.thumbnail"
 		[alt]="event.title" />
-	<mat-card-content>
-		{{ event.description }}
+	<mat-card-content class="app-event-card__card-content">
+		{{ event.description | truncate: 80 }}
 	</mat-card-content>
 </mat-card>

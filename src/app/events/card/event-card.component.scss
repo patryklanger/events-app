@@ -3,7 +3,21 @@
 
 	display: block;
 	width: calc(25% - $card-gap);
+	height: 350px;
 	cursor: pointer;
+
+	&__card {
+		height: 320px;
+	}
+
+	&__image {
+		height: 170px;
+		object-fit: cover;
+	}
+
+	& &__card-content {
+		padding: 16px;
+	}
 
     @media (max-width: 1000px) {
 		width: calc(33% - $card-gap);

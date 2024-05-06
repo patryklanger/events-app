@@ -13,4 +13,8 @@
 	&__card {
 		max-width: 600px;
 	}
+
+	& &__card-content {
+		padding: 16px;
+	}
 }

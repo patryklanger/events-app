@@ -7,7 +7,7 @@
 			[src]="event.thumbnail"
 			mat-card-image
 			[alt]="event.title" />
-		<mat-card-content>
+		<mat-card-content class="app-event-details__card-content">
 			<p>
 				<span class="app-event-details__info-title">Description: </span>
 				{{ event.description }}
@@ -22,11 +22,11 @@
 			</p>
 			<p>
 				<span class="app-event-details__info-title">Contact no.: </span>
-				{{ event.phoneNumber }}
+				<a [href]="'tel:' + event.phoneNumber">{{ event.phoneNumber }}</a>
 			</p>
 			<p>
 				<span class="app-event-details__info-title">Email address: </span>
-				{{ event.email }}
+				<a [href]="'mailto:' + event.email">{{ event.email }}</a>
 			</p>
 			<p>
 				<span class="app-event-details__info-title">Location: </span>
