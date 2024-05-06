@@ -25,12 +25,12 @@ export class EventDetailsComponent implements OnDestroy {
 
 	constructor(
 		private activatedRoute: ActivatedRoute,
-		private listService: EventsListService,
+		listService: EventsListService,
 		cdr: ChangeDetectorRef
 	) {
 		const event$ = this.activatedRoute.params.pipe(
 			map(params => params["id"]),
-			switchMap(id => this.listService.getEvent$(id)),
+			switchMap(id => listService.getEvent$(id)),
 			tap(event => this._event = event),
 			tap(() => cdr.markForCheck()),
 			takeUntil(this._destroy$)

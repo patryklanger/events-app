@@ -3,7 +3,7 @@ import { TestBed } from "@angular/core/testing";
 import { EventInfo, EventType, MockEventGateway } from "@app/core";
 
 import { EventsListService } from "./events-list.service";
-import { Subject, of, tap } from "rxjs";
+import { Subject, of, takeUntil, tap } from "rxjs";
 
 const mockEvents: EventInfo[] = [
 	{
@@ -23,7 +23,7 @@ describe("EventsListService", () => {
 	let eventsListService: EventsListService;
 	let mockEventGatewaySpy: jasmine.SpyObj<MockEventGateway>;
 	let matSnackBarSpy: jasmine.SpyObj<MatSnackBar>;
-	const _destroy$ = new Subject<void>();
+	const destroy$ = new Subject<void>();
 
 	beforeEach(() => {
 		mockEventGatewaySpy = jasmine.createSpyObj(
@@ -53,11 +53,11 @@ describe("EventsListService", () => {
 	});
 
 	afterEach(() => {
-		_destroy$.next();
+		destroy$.next();
 	});
 
 	afterAll(() => {
-		_destroy$.complete();
+		destroy$.complete();
 	});
 
 	describe(".getEvents$()", () => {
@@ -68,7 +68,8 @@ describe("EventsListService", () => {
 				tap(events => {
 					expect(events).toEqual(mockEvents);
 					expect(mockEventGatewaySpy.getEvents$).toHaveBeenCalledTimes(1);
-				})
+				}),
+				takeUntil(destroy$),
 			).subscribe();
 		});
 	});
@@ -83,7 +84,8 @@ describe("EventsListService", () => {
 					expect(event).toEqual(mockEvents[0]);
 					expect(mockEventGatewaySpy.getEvent$).toHaveBeenCalledTimes(1);
 					expect(mockEventGatewaySpy.getEvent$).toHaveBeenCalledWith(eventId);
-				})
+				}),
+				takeUntil(destroy$),
 			).subscribe();
 		});
 
@@ -96,7 +98,8 @@ describe("EventsListService", () => {
 					expect(event).toBeUndefined();
 					expect(mockEventGatewaySpy.getEvent$).toHaveBeenCalledTimes(1);
 					expect(mockEventGatewaySpy.getEvent$).toHaveBeenCalledWith(eventId);
-				})
+				}),
+				takeUntil(destroy$),
 			).subscribe();
 		});
 	});
@@ -124,7 +127,8 @@ describe("EventsListService", () => {
 					expect(mockEventGatewaySpy.addEvent$).toHaveBeenCalledWith(payload, mockImage);
 					expect(matSnackBarSpy.open).toHaveBeenCalledTimes(1);
 					expect(matSnackBarSpy.open).toHaveBeenCalledWith("Event created", "Close");
-				})
+				}),
+				takeUntil(destroy$),
 			).subscribe();
 		});
 	});

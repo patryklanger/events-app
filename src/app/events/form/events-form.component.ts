@@ -33,14 +33,14 @@ export class EventsFormComponent {
 		email: new FormControl("", [Validators.required, Validators.email]),
 	});
 
-	private readonly createEvent$ = new Subject<EventPayload>();
+	private readonly _createEvent$ = new Subject<EventPayload>();
 	private readonly _destroy$ = new Subject<void>();
 
 	constructor(
 		private fb: FormBuilder,
 		service: EventsListService,
 	) {
-		const createEvent$ = this.createEvent$.pipe(
+		const createEvent$ = this._createEvent$.pipe(
 			switchMap(payload => service.createEvent$(payload, this.formGroup.get("display").value)),
 			tap(() => this.clear()),
 			takeUntil(this._destroy$),
@@ -58,7 +58,7 @@ export class EventsFormComponent {
 	submit() {
 		const { time, date, ...rest } = this.formGroup.getRawValue();
 		const [hours, minutes] = time.split(":")
-		this.createEvent$.next({ ...rest, date: new Date(date.setHours(+hours, +minutes)).toISOString() });
+		this._createEvent$.next({ ...rest, date: new Date(date.setHours(+hours, +minutes)).toISOString() });
 	}
 
 	clear() {
