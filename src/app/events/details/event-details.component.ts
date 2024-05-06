@@ -1,19 +1,19 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable, Subject, map, switchMap, takeUntil, tap } from 'rxjs';
-import { EventInfo } from '@app/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, ViewEncapsulation } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { Observable, Subject, map, switchMap, takeUntil, tap } from "rxjs";
+import { EventInfo } from "@app/core";
 
-import { EventsListService } from '../list/events-list.service';
+import { EventsListService } from "../list/events-list.service";
 
-const NAME_KEBAB = 'app-event-details';
+const NAME_KEBAB = "app-event-details";
 
 @Component({
 	selector: NAME_KEBAB,
 	host: { class: NAME_KEBAB },
 	encapsulation: ViewEncapsulation.None,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	templateUrl: './event-details.component.html',
-	styleUrl: './event-details.component.scss'
+	templateUrl: "./event-details.component.html",
+	styleUrl: "./event-details.component.scss"
 })
 export class EventDetailsComponent implements OnDestroy {
 
@@ -29,7 +29,7 @@ export class EventDetailsComponent implements OnDestroy {
 		cdr: ChangeDetectorRef
 	) {
 		const event$ = this.activatedRoute.params.pipe(
-			map(params => params['id']),
+			map(params => params["id"]),
 			switchMap(id => this.listService.getEvent$(id)),
 			tap(event => this._event = event),
 			tap(() => cdr.markForCheck()),

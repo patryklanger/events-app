@@ -2,9 +2,6 @@
 
 .app-events-list {
 	@include mixins.page-container;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
 
 	&__list-container {
 		display: inline-flex;

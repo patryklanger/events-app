@@ -1,34 +1,37 @@
-@if(event) {
-<mat-card class="app-event-details__card">
-	<mat-card-header>
-		<h3>{{ event.title }}</h3>
-	</mat-card-header>
-	<img [src]="event.thumbnail" mat-card-image [alt]="event.title" />
-	<mat-card-content>
-		<p>
-			<span class="app-event-details__info-title">Description: </span>
-			{{ event.description }}
-		</p>
-		<p>
-			<span class="app-event-details__info-title">Date: </span>
-			{{event.date | date: 'medium'}}
-		</p>
-		<p>
-			<span class="app-event-details__info-title">Type: </span>
-			{{event.type}}
-		</p>
-		<p>
-			<span class="app-event-details__info-title">Contact no.: </span>
-			{{event.phoneNumber}}
-		</p>
-		<p>
-			<span class="app-event-details__info-title">Email address: </span>
-			{{event.email}}
-		</p>
-		<p>
-			<span class="app-event-details__info-title">Location: </span>
-			{{event.address}}
-		</p>
-	</mat-card-content>
-</mat-card>
+@if (event) {
+	<mat-card class="app-event-details__card">
+		<mat-card-header>
+			<h3>{{ event.title }}</h3>
+		</mat-card-header>
+		<img
+			[src]="event.thumbnail"
+			mat-card-image
+			[alt]="event.title" />
+		<mat-card-content>
+			<p>
+				<span class="app-event-details__info-title">Description: </span>
+				{{ event.description }}
+			</p>
+			<p>
+				<span class="app-event-details__info-title">Date: </span>
+				{{ event.date | date: "medium" }}
+			</p>
+			<p>
+				<span class="app-event-details__info-title">Type: </span>
+				{{ event.type }}
+			</p>
+			<p>
+				<span class="app-event-details__info-title">Contact no.: </span>
+				{{ event.phoneNumber }}
+			</p>
+			<p>
+				<span class="app-event-details__info-title">Email address: </span>
+				{{ event.email }}
+			</p>
+			<p>
+				<span class="app-event-details__info-title">Location: </span>
+				{{ event.address }}
+			</p>
+		</mat-card-content>
+	</mat-card>
 }

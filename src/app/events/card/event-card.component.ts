@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from "@angular/core";
+import { Router } from "@angular/router";
 import { EventInfo } from "@app/core";
 
-const NAME_KEBAB = 'app-event-card';
+const NAME_KEBAB = "app-event-card";
 
 @Component({
 	selector: NAME_KEBAB,
@@ -12,8 +12,8 @@ const NAME_KEBAB = 'app-event-card';
 	},
 	encapsulation: ViewEncapsulation.None,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	templateUrl: './event-card.component.html',
-	styleUrl: './event-card.component.scss'
+	templateUrl: "./event-card.component.html",
+	styleUrl: "./event-card.component.scss"
 })
 export class EventCardComponent {
 	@Input() event: EventInfo;
@@ -21,6 +21,6 @@ export class EventCardComponent {
 	constructor(private router: Router) {}
 
 	onCardClick() {
-		this.router.navigate(['events', 'details', this.event.id]);
+		this.router.navigate(["events", "details", this.event.id]);
 	}
 }

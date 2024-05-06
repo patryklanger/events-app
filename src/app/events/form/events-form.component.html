@@ -2,97 +2,95 @@
 	[formGroup]="formGroup"
 	class="app-events-form__form"
 	id="event-form">
-	<mat-form-field class="app-events-form__form-field">
-		<mat-label>Title</mat-label>
-		<input
-			formControlName="title"
-			matInput />
-		<mat-error [appError]="getFormControlError('title')"></mat-error>
-	</mat-form-field>
-	<mat-form-field class="app-events-form__form-field">
-		<mat-label>Choose a date</mat-label>
-		<input
-			matInput
-			[matDatepicker]="datepicker"
-			[min]="minDate"
-			formControlName="date" />
-		<mat-hint>MM/DD/YYYY</mat-hint>
-		<mat-datepicker-toggle
-			matIconSuffix
-			[for]="datepicker"></mat-datepicker-toggle>
-		<mat-datepicker #datepicker>
-			<mat-datepicker-actions>
-				<button
-					mat-button
-					matDatepickerCancel>
-					Cancel
-				</button>
-				<button
-					mat-raised-button
-					color="primary"
-					matDatepickerApply>
-					Apply
-				</button>
-			</mat-datepicker-actions>
-		</mat-datepicker>
-	</mat-form-field>
-	<mat-form-field class="app-events-form__form-field">
-		<mat-label>Time</mat-label>
-		<input
-			matInput
-			[ngxMatTimepicker]="picker"
-			[format]="24"
-			formControlName="time" />
-		<ngx-mat-timepicker #picker></ngx-mat-timepicker>
-	</mat-form-field>
-	<mat-form-field class="app-events-form__form-field">
-		<mat-label>Description</mat-label>
-		<textarea
-			formControlName="description"
-			matInput
-			cdkTextareaAutosize
-			#autosize="cdkTextareaAutosize"
-			cdkAutosizeMinRows="1"
-			cdkAutosizeMaxRows="5"></textarea>
-		<mat-error [appError]="getFormControlError('description')"></mat-error>
-	</mat-form-field>
-	<mat-form-field class="app-events-form__form-field">
-		<mat-label>Type</mat-label>
-		<mat-select formControlName="type">
-			@for (event of eventTypes; track event) {
-				<mat-option [value]="event.value">{{ event.name }}</mat-option>
+	@for (field of formModel; track field) {
+		@switch (field.type) {
+			@case ("text") {
+				<mat-form-field class="app-events-form__form-field">
+					<mat-label>{{ field.name }}</mat-label>
+					<input
+						[formControlName]="field.controlName"
+						matInput />
+					<mat-error [appError]="getFormControlError(field.controlName)"></mat-error>
+				</mat-form-field>
 			}
-		</mat-select>
-		<mat-error [appError]="getFormControlError('type')"></mat-error>
-	</mat-form-field>
-	<mat-form-field class="app-events-form__form-field">
-		<mat-label>Phone number</mat-label>
-		<input
-			formControlName="phoneNumber"
-			matInput />
-		<mat-error [appError]="getFormControlError('phoneNumber')"></mat-error>
-	</mat-form-field>
-	<mat-form-field class="app-events-form__form-field">
-		<mat-label>Email address</mat-label>
-		<input
-			formControlName="email"
-			matInput />
-		<mat-error [appError]="getFormControlError('email')"></mat-error>
-	</mat-form-field>
-	<mat-form-field class="app-events-form__form-field">
-		<mat-label>Address</mat-label>
-		<input
-			formControlName="address"
-			matInput />
-		<mat-error [appError]="getFormControlError('address')"></mat-error>
-	</mat-form-field>
-	<mat-form-field class="app-events-form__form-field app-events-form__form-field--full-width">
-		<ngx-mat-file-input
-			placeholder="Event thumbnail"
-			formControlName="display"
-			accept="image/*">
-		</ngx-mat-file-input>
-	</mat-form-field>
+			@case ("date") {
+				<mat-form-field class="app-events-form__form-field">
+					<mat-label>{{ field.name }}</mat-label>
+					<input
+						matInput
+						[matDatepicker]="datepicker"
+						[min]="minDate"
+						[formControlName]="field.controlName" />
+					<mat-hint>MM/DD/YYYY</mat-hint>
+					<mat-datepicker-toggle
+						matIconSuffix
+						[for]="datepicker"></mat-datepicker-toggle>
+					<mat-datepicker #datepicker>
+						<mat-datepicker-actions>
+							<button
+								mat-button
+								matDatepickerCancel>
+								Cancel
+							</button>
+							<button
+								mat-raised-button
+								color="primary"
+								matDatepickerApply>
+								Apply
+							</button>
+						</mat-datepicker-actions>
+					</mat-datepicker>
+					<mat-error [appError]="getFormControlError(field.controlName)"></mat-error>
+				</mat-form-field>
+			}
+			@case ("time") {
+				<mat-form-field class="app-events-form__form-field">
+					<mat-label>{{ field.name }}</mat-label>
+					<input
+						matInput
+						[ngxMatTimepicker]="picker"
+						[format]="24"
+						[formControlName]="field.controlName" />
+					<ngx-mat-timepicker #picker></ngx-mat-timepicker>
+					<mat-error [appError]="getFormControlError(field.controlName)"></mat-error>
+				</mat-form-field>
+			}
+			@case ("textarea") {
+				<mat-form-field class="app-events-form__form-field">
+					<mat-label>{{ field.name }}</mat-label>
+					<textarea
+						[formControlName]="field.controlName"
+						matInput
+						cdkTextareaAutosize
+						#autosize="cdkTextareaAutosize"
+						cdkAutosizeMinRows="1"
+						cdkAutosizeMaxRows="5"></textarea>
+					<mat-error [appError]="getFormControlError(field.controlName)"></mat-error>
+				</mat-form-field>
+			}
+			@case ("select") {
+				<mat-form-field class="app-events-form__form-field">
+					<mat-label>{{ field.name }}</mat-label>
+					<mat-select [formControlName]="field.controlName">
+						@for (option of field.options; track option) {
+							<mat-option [value]="option.value">{{ option.name }}</mat-option>
+						}
+					</mat-select>
+					<mat-error [appError]="getFormControlError(field.controlName)"></mat-error>
+				</mat-form-field>
+			}
+			@case ("file") {
+				<mat-form-field class="app-events-form__form-field app-events-form__form-field--full-width">
+					<ngx-mat-file-input
+						[placeholder]="field.name"
+						[formControlName]="field.controlName"
+						[accept]="field.accept">
+					</ngx-mat-file-input>
+					<mat-error [appError]="getFormControlError(field.controlName)"></mat-error>
+				</mat-form-field>
+			}
+		}
+	}
 </form>
 <div class="app-events-form__action-buttons">
 	<button

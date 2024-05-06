@@ -1,6 +1,9 @@
-@for(item of menuItems; track item) {
-<button class="app-menu__item" [routerLink]="item.path" mat-flat-button
-	[color]="isActive(item.path) ? 'primary' : 'warn'">
-	{{item.showName}}
-</button>
+@for (item of menuItems; track item) {
+	<button
+		class="app-menu__item"
+		[routerLink]="item.path"
+		mat-flat-button
+		[color]="isActive(item.path) ? 'primary' : 'warn'">
+		{{ item.showName }}
+	</button>
 }

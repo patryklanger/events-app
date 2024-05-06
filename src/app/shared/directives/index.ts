@@ -1,1 +1,1 @@
-export { ValidationErrorDirective } from './error.directive';
+export { ValidationErrorDirective } from "./error.directive";

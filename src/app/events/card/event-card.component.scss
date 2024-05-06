@@ -1,5 +1,19 @@
 .app-event-card {
+	$card-gap: 15px;
+
 	display: block;
-	width: 250px;
+	width: calc(25% - $card-gap);
 	cursor: pointer;
+
+    @media (max-width: 1000px) {
+		width: calc(33% - $card-gap);
+	}
+
+    @media (max-width: 750px) {
+		width: calc(50% - $card-gap);
+	}
+
+	@media(max-width: 500px) {
+		width: 100%;
+	}
 }

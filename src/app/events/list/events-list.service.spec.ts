@@ -3,7 +3,7 @@ import { TestBed } from "@angular/core/testing";
 import { EventInfo, EventType, MockEventGateway } from "@app/core";
 
 import { EventsListService } from "./events-list.service";
-import { Subscription, of } from "rxjs";
+import { Subject, of, tap } from "rxjs";
 
 const mockEvents: EventInfo[] = [
 	{
@@ -23,12 +23,12 @@ describe("EventsListService", () => {
 	let eventsListService: EventsListService;
 	let mockEventGatewaySpy: jasmine.SpyObj<MockEventGateway>;
 	let matSnackBarSpy: jasmine.SpyObj<MatSnackBar>;
-	let subs: Subscription;
+	const _destroy$ = new Subject<void>();
 
 	beforeEach(() => {
 		mockEventGatewaySpy = jasmine.createSpyObj(
 			"MockEventGateway",
-			["getEvents", "getEvent", "addEvent"]
+			["getEvents$", "getEvent$", "addEvent$"]
 		);
 		matSnackBarSpy = jasmine.createSpyObj(
 			"MatSnackBar",
@@ -50,40 +50,54 @@ describe("EventsListService", () => {
 		});
 
 		eventsListService = TestBed.inject(EventsListService);
-		subs = new Subscription();
 	});
 
 	afterEach(() => {
-		if (subs) {
-			subs.unsubscribe();
-		}
+		_destroy$.next();
+	});
+
+	afterAll(() => {
+		_destroy$.complete();
 	});
 
 	describe(".getEvents$()", () => {
 		it("should return events", () => {
-			mockEventGatewaySpy.getEvents.and.returnValue(of(mockEvents));
+			mockEventGatewaySpy.getEvents$.and.returnValue(of(mockEvents));
 
-			subs.add(
-				eventsListService.getEvents$().subscribe(events => {
+			eventsListService.getEvents$().pipe(
+				tap(events => {
 					expect(events).toEqual(mockEvents);
-					expect(mockEventGatewaySpy.getEvents).toHaveBeenCalledTimes(1);
+					expect(mockEventGatewaySpy.getEvents$).toHaveBeenCalledTimes(1);
 				})
-			);
+			).subscribe();
 		});
 	});
 
 	describe(".getEvent$()", () => {
 		it("should return event", () => {
 			const eventId = "1";
-			mockEventGatewaySpy.getEvent.and.returnValue(of(mockEvents[0]));
+			mockEventGatewaySpy.getEvent$.and.returnValue(of(mockEvents[0]));
 
-			subs.add(
-				eventsListService.getEvent$(eventId).subscribe(event => {
+			eventsListService.getEvent$(eventId).pipe(
+				tap(event => {
 					expect(event).toEqual(mockEvents[0]);
-					expect(mockEventGatewaySpy.getEvent).toHaveBeenCalledTimes(1);
-					expect(mockEventGatewaySpy.getEvent).toHaveBeenCalledWith(eventId);
+					expect(mockEventGatewaySpy.getEvent$).toHaveBeenCalledTimes(1);
+					expect(mockEventGatewaySpy.getEvent$).toHaveBeenCalledWith(eventId);
 				})
-			);
+			).subscribe();
+		});
+
+		it("should return undefined if event not found", () => {
+			const eventId = "no-valid-id";
+			mockEventGatewaySpy.getEvent$.and.returnValue(of(undefined));
+
+			eventsListService.getEvent$(eventId).pipe(
+				tap(event => {
+					expect(event).toBeUndefined();
+					expect(mockEventGatewaySpy.getEvent$).toHaveBeenCalledTimes(1);
+					expect(mockEventGatewaySpy.getEvent$).toHaveBeenCalledWith(eventId);
+				})
+			).subscribe();
 		});
 	});
 
@@ -97,21 +111,21 @@ describe("EventsListService", () => {
 				phoneNumber: "123456789",
 				email: "xyx@gmail.pl",
 				address: "Stadium",
-			}
+			};
 
 			const mockImage = new File([""], "filename");
 
-			mockEventGatewaySpy.addEvent.and.returnValue(of(mockEvents[0]));
+			mockEventGatewaySpy.addEvent$.and.returnValue(of(mockEvents[0]));
 
-			subs.add(
-				eventsListService.createEvent$(payload, mockImage).subscribe(event => {
+			eventsListService.createEvent$(payload, mockImage).pipe(
+				tap(event => {
 					expect(event).toEqual(mockEvents[0]);
-					expect(mockEventGatewaySpy.addEvent).toHaveBeenCalledTimes(1);
-					expect(mockEventGatewaySpy.addEvent).toHaveBeenCalledWith(payload, mockImage);
+					expect(mockEventGatewaySpy.addEvent$).toHaveBeenCalledTimes(1);
+					expect(mockEventGatewaySpy.addEvent$).toHaveBeenCalledWith(payload, mockImage);
 					expect(matSnackBarSpy.open).toHaveBeenCalledTimes(1);
 					expect(matSnackBarSpy.open).toHaveBeenCalledWith("Event created", "Close");
 				})
-			);
+			).subscribe();
 		});
 	});
 });

@@ -24,7 +24,7 @@
           }
         ],
         "@angular-eslint/no-host-metadata-property": [
-          "error",
+          "off",
           {
             "allowStatic": true
           }

@@ -4,7 +4,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { EventInfo, EventPayload, MockEventGateway } from "@app/core";
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: "root"
 })
 export class EventsListService {
 
@@ -15,16 +15,16 @@ export class EventsListService {
 	}
 
 	getEvents$(): Observable<EventInfo[]> {
-		return this.mockEventGateway.getEvents();
+		return this.mockEventGateway.getEvents$();
 	}
 
 	getEvent$(id: string): Observable<EventInfo | undefined> {
-		return this.mockEventGateway.getEvent(id);
+		return this.mockEventGateway.getEvent$(id);
 	}
 
 	createEvent$(payload: EventPayload, image: File): Observable<EventInfo> {
-		return this.mockEventGateway.addEvent(payload, image).pipe(
-			tap(() => this.snackbar.open('Event created', 'Close'))
+		return this.mockEventGateway.addEvent$(payload, image).pipe(
+			tap(() => this.snackbar.open("Event created", "Close"))
 		);
 	}
 }

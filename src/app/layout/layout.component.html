@@ -1,11 +1,13 @@
 <app-header></app-header>
 <mat-drawer-container class="app-layout__drawer">
 	<mat-drawer
-		mode="side"
+		mode="over"
 		[opened]="menuOpened">
 		<app-menu></app-menu>
 	</mat-drawer>
-	<mat-drawer-content>
-		<router-outlet></router-outlet>
+	<mat-drawer-content class="app-layout__drawer-content">
+		<div class="app-layout__outlet-container">
+			<router-outlet></router-outlet>
+		</div>
 	</mat-drawer-content>
 </mat-drawer-container>

@@ -6,35 +6,35 @@ import { Observable, of } from "rxjs";
 
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: "root"
 })
 export class MockEventGateway {
-  private events = events;
+	private events = events;
 
-  constructor() {}
+	constructor() {}
 
-  getEvents(): Observable<EventInfo[]> {
-    return of(this.events);
-  }
+	getEvents$(): Observable<EventInfo[]> {
+		return of(this.events);
+	}
 
-  getEvent(id: string): Observable<EventInfo | undefined> {
-    return of(this.events.find((event) => event.id === id));
-  }
+	getEvent$(id: string): Observable<EventInfo | undefined> {
+		return of(this.events.find((event) => event.id === id));
+	}
 
-  addEvent(payload: EventPayload, image: File): Observable<EventInfo> {
-    const formData = new FormData();
-    formData.append("image", image);
+	addEvent$(payload: EventPayload, image: File): Observable<EventInfo> {
+		const formData = new FormData();
+		formData.append("image", image);
 
-    console.log("EVENT CREATED: ", payload, "IMAGE: ", image);
+		console.log("EVENT CREATED: ", payload, "IMAGE: ", image);
 
-    const event: EventInfo = {
-      id: (this.events.length + 1).toString(),
-      ...payload,
-      thumbnail: "/assets/football-match.jpeg",
-    };
+		const event: EventInfo = {
+			id: (this.events.length + 1).toString(),
+			...payload,
+			thumbnail: "/assets/football-match.jpeg",
+		};
 
-    this.events.push(event);
+		this.events.push(event);
 
-    return of(event);
-  }
+		return of(event);
+	}
 }

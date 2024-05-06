@@ -1,17 +1,17 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, ViewEncapsulation } from '@angular/core';
-import { Observable, Subject, takeUntil, tap } from 'rxjs';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, ViewEncapsulation } from "@angular/core";
+import { Observable, Subject, takeUntil, tap } from "rxjs";
 
-import { LayoutService } from './layout.service';
+import { LayoutService } from "./layout.service";
 
-const NAME_KEBAB = 'app-layout';
+const NAME_KEBAB = "app-layout";
 
 @Component({
 	selector: NAME_KEBAB,
 	host: { class: NAME_KEBAB },
 	encapsulation: ViewEncapsulation.None,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	templateUrl: './layout.component.html',
-	styleUrl: './layout.component.scss'
+	templateUrl: "./layout.component.html",
+	styleUrl: "./layout.component.scss"
 })
 export class LayoutComponent implements OnDestroy {
 
@@ -23,11 +23,11 @@ export class LayoutComponent implements OnDestroy {
 
 	constructor(
 		private layoutService: LayoutService,
-		private cdr: ChangeDetectorRef
+		cdr: ChangeDetectorRef,
 	) {
 		const menuOpened$ = this.layoutService.drawerOpened$.pipe(
 			tap(menuOpened => this._menuOpened = menuOpened),
-			tap(() => this.cdr.markForCheck()),
+			tap(() => cdr.markForCheck()),
 			takeUntil(this._destroy$)
 		);
 

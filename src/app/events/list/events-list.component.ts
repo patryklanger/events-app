@@ -1,18 +1,18 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, ViewEncapsulation } from '@angular/core';
-import { Subject, tap, takeUntil, Observable } from 'rxjs';
-import { EventInfo } from '@app/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, ViewEncapsulation } from "@angular/core";
+import { Subject, tap, takeUntil, Observable } from "rxjs";
+import { EventInfo } from "@app/core";
 
-import { EventsListService } from './events-list.service';
+import { EventsListService } from "./events-list.service";
 
-const NAME_KEBAB = 'app-events-list';
+const NAME_KEBAB = "app-events-list";
 
 @Component({
 	selector: NAME_KEBAB,
 	host: { class: NAME_KEBAB },
 	encapsulation: ViewEncapsulation.None,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	templateUrl: './events-list.component.html',
-	styleUrl: './events-list.component.scss'
+	templateUrl: "./events-list.component.html",
+	styleUrl: "./events-list.component.scss"
 })
 export class EventsListComponent implements OnDestroy {
 

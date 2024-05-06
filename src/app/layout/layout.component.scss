@@ -7,4 +7,14 @@
 		height: 100%;
 		flex-grow: 1;
 	}
+
+	&__outlet-container {
+		max-width: 1200px;
+	}
+
+	& &__drawer-content {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+	}
 }
