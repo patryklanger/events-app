@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnDestroy, ViewEncapsulation } from "@angular/core";
 import { FormBuilder, FormControl, ValidationErrors, Validators } from "@angular/forms";
 import { Observable, Subject, switchMap, takeUntil, tap } from "rxjs";
 import { EventPayload, EventType, FormFieldType } from "@app/core";
@@ -17,7 +17,7 @@ const NAME_KEBAB = "app-events-form";
 	templateUrl: "./events-form.component.html",
 	styleUrl: "./events-form.component.scss"
 })
-export class EventsFormComponent {
+export class EventsFormComponent implements OnDestroy {
 
 	readonly formFieldType = FormFieldType
 	readonly formModel = eventsFromModel;
@@ -65,5 +65,11 @@ export class EventsFormComponent {
 	clear() {
 		this.formGroup.reset();
 		this.formGroup.markAsUntouched();
+	}
+
+	ngOnDestroy() {
+		this._createEvent$.complete();
+		this._destroy$.next();
+		this._destroy$.complete();
 	}
 }
