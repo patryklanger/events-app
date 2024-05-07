@@ -6,7 +6,7 @@
 	id="event-form">
 	@for (field of formModel; track field) {
 		@switch (field.type) {
-			@case ("text") {
+			@case (formFieldType.text) {
 				<mat-form-field class="app-events-form__form-field">
 					<mat-label>{{ field.name }}</mat-label>
 					<input
@@ -15,13 +15,13 @@
 					<mat-error [appError]="getFormControlError(field.controlName)"></mat-error>
 				</mat-form-field>
 			}
-			@case ("date") {
+			@case (formFieldType.date) {
 				<mat-form-field class="app-events-form__form-field">
 					<mat-label>{{ field.name }}</mat-label>
 					<input
 						matInput
 						[matDatepicker]="datepicker"
-						[min]="minDate"
+						[min]="field.futureOnly ? minDate : undefined"
 						[formControlName]="field.controlName" />
 					<mat-hint>MM/DD/YYYY</mat-hint>
 					<mat-datepicker-toggle
@@ -45,7 +45,7 @@
 					<mat-error [appError]="getFormControlError(field.controlName)"></mat-error>
 				</mat-form-field>
 			}
-			@case ("time") {
+			@case (formFieldType.time) {
 				<mat-form-field class="app-events-form__form-field">
 					<mat-label>{{ field.name }}</mat-label>
 					<input
@@ -57,7 +57,7 @@
 					<mat-error [appError]="getFormControlError(field.controlName)"></mat-error>
 				</mat-form-field>
 			}
-			@case ("textarea") {
+			@case (formFieldType.textarea) {
 				<mat-form-field class="app-events-form__form-field">
 					<mat-label>{{ field.name }}</mat-label>
 					<textarea
@@ -70,7 +70,7 @@
 					<mat-error [appError]="getFormControlError(field.controlName)"></mat-error>
 				</mat-form-field>
 			}
-			@case ("select") {
+			@case (formFieldType.select) {
 				<mat-form-field class="app-events-form__form-field">
 					<mat-label>{{ field.name }}</mat-label>
 					<mat-select [formControlName]="field.controlName">
@@ -81,7 +81,7 @@
 					<mat-error [appError]="getFormControlError(field.controlName)"></mat-error>
 				</mat-form-field>
 			}
-			@case ("file") {
+			@case (formFieldType.file) {
 				<mat-form-field class="app-events-form__form-field app-events-form__form-field--full-width">
 					<ngx-mat-file-input
 						[placeholder]="field.name"

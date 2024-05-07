@@ -19,6 +19,7 @@ export interface TextareaFormField extends FormFieldBase {
 
 export interface DateFormField extends FormFieldBase {
 	type: FormFieldType.date;
+	futureOnly?: boolean;
 }
 
 export interface TimeFormField extends FormFieldBase {

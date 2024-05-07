@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/core";
 import { FormBuilder, FormControl, ValidationErrors, Validators } from "@angular/forms";
 import { Observable, Subject, switchMap, takeUntil, tap } from "rxjs";
-import { EventPayload, EventType } from "@app/core";
+import { EventPayload, EventType, FormFieldType } from "@app/core";
 import { PHONE_NUMBER_PATTERN } from "@app/shared";
 
 import { EventsListService } from "../list/events-list.service";
@@ -19,6 +19,7 @@ const NAME_KEBAB = "app-events-form";
 })
 export class EventsFormComponent {
 
+	readonly formFieldType = FormFieldType
 	readonly formModel = eventsFromModel;
 	readonly minDate = new Date();
 	readonly formGroup = this.fb.group({

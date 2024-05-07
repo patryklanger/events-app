@@ -18,6 +18,7 @@ export const eventsFromModel: FormField[] = [
 		name: "Date",
 		controlName: "date",
 		type: FormFieldType.date,
+		futureOnly: true
 	},
 	{
 		name: "Time",
